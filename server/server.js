@@ -2,6 +2,13 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+app.use(express.json());
+app.use(
+    express.urlencoded({
+        extended: true,
+    })
+);
+
 const mongoose = require("mongoose");
 mongoose.connect(
     "mongodb+srv://mongodbuser:random123@cluster0.lscs7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
@@ -27,9 +34,15 @@ app.get("/save-products", (request, response) => {
     response.send("This is a 'Get' response from background.js");
 });
 
+// app.post("/save-products", (req, res) => {
+//     console.log("req.body in save-products route: ", req.body);
+//     res.send("jai hind!");
+// });
+
 app.post("/save-products", (req, res) => {
-    console.log("req.body in save-products route: ", req.body);
-    res.send("jai hind!");
+    // console.log("req in save-products route:");
+    console.log(req.body);
+    res.send("got the response");
 });
 
 app.listen(port, () => {

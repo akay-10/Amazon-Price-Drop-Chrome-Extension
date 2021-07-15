@@ -3,6 +3,10 @@
     "version": "1.0",
     "name": "Amazon Price Drop",
     "description": "Notifies you when price of an item drops",
+    "permissions": [
+        "tabs",
+        "activeTab"
+    ],
     "content_scripts": [
         {
             "matches": [
